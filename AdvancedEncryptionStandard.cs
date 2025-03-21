@@ -1,8 +1,8 @@
 namespace AdvancedEncryptionStandard
 {
-    public partial class Form1 : Form
+    public partial class AdvancedEncryptionStandard : Form
     {
-        public Form1()
+        public AdvancedEncryptionStandard()
         {
             InitializeComponent();
         }
