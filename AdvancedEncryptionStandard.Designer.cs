@@ -47,9 +47,9 @@
             CbOutFormat = new ComboBox();
             label7 = new Label();
             BtnClearEnc = new Button();
-            BtnEnc = new Button();
+            BtnEncrypt = new Button();
             GbDec = new GroupBox();
-            BtnDec = new Button();
+            BtnDecrypt = new Button();
             BtnClearDec = new Button();
             label8 = new Label();
             CbInFormat = new ComboBox();
@@ -84,7 +84,7 @@
             // 
             // GbEnc
             // 
-            GbEnc.Controls.Add(BtnEnc);
+            GbEnc.Controls.Add(BtnEncrypt);
             GbEnc.Controls.Add(BtnClearEnc);
             GbEnc.Controls.Add(label7);
             GbEnc.Controls.Add(CbOutFormat);
@@ -251,18 +251,18 @@
             BtnClearEnc.Text = "Clear";
             BtnClearEnc.UseVisualStyleBackColor = true;
             // 
-            // BtnEnc
+            // BtnEncrypt
             // 
-            BtnEnc.Location = new Point(116, 272);
-            BtnEnc.Name = "BtnEnc";
-            BtnEnc.Size = new Size(99, 23);
-            BtnEnc.TabIndex = 15;
-            BtnEnc.Text = "Encrypt";
-            BtnEnc.UseVisualStyleBackColor = true;
+            BtnEncrypt.Location = new Point(116, 272);
+            BtnEncrypt.Name = "BtnEncrypt";
+            BtnEncrypt.Size = new Size(99, 23);
+            BtnEncrypt.TabIndex = 15;
+            BtnEncrypt.Text = "Encrypt";
+            BtnEncrypt.UseVisualStyleBackColor = true;
             // 
             // GbDec
             // 
-            GbDec.Controls.Add(BtnDec);
+            GbDec.Controls.Add(BtnDecrypt);
             GbDec.Controls.Add(BtnClearDec);
             GbDec.Controls.Add(label8);
             GbDec.Controls.Add(CbInFormat);
@@ -277,14 +277,14 @@
             GbDec.TabStop = false;
             GbDec.Text = "Decryption";
             // 
-            // BtnDec
+            // BtnDecrypt
             // 
-            BtnDec.Location = new Point(116, 272);
-            BtnDec.Name = "BtnDec";
-            BtnDec.Size = new Size(99, 23);
-            BtnDec.TabIndex = 15;
-            BtnDec.Text = "Decrypt";
-            BtnDec.UseVisualStyleBackColor = true;
+            BtnDecrypt.Location = new Point(116, 272);
+            BtnDecrypt.Name = "BtnDecrypt";
+            BtnDecrypt.Size = new Size(99, 23);
+            BtnDecrypt.TabIndex = 15;
+            BtnDecrypt.Text = "Decrypt";
+            BtnDecrypt.UseVisualStyleBackColor = true;
             // 
             // BtnClearDec
             // 
@@ -381,7 +381,7 @@
         private ComboBox CbPadding;
         private TextBox TxtKey;
         private Label label2;
-        private Button BtnEnc;
+        private Button BtnEncrypt;
         private Button BtnClearEnc;
         private Label label7;
         private ComboBox CbOutFormat;
@@ -390,7 +390,7 @@
         private Label label5;
         private TextBox TxtPlain;
         private GroupBox GbDec;
-        private Button BtnDec;
+        private Button BtnDecrypt;
         private Button BtnClearDec;
         private Label label8;
         private ComboBox CbInFormat;
