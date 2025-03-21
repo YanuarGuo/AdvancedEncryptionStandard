@@ -49,7 +49,7 @@ This is a Windows Forms application that provides AES (Advanced Encryption Stand
   - Implements Windows Forms UI components for easy configuration and execution.
 
 ## Dependencies
-- .NET Framework
+- .NET Framework (8.0 or higher)
 - Windows Forms (System.Windows.Forms)
 - System.Security.Cryptography for encryption functions
 
