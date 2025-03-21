@@ -29,42 +29,54 @@
         private void InitializeComponent()
         {
             GbConfig = new GroupBox();
-            GbEnc = new GroupBox();
-            CbKeySize = new ComboBox();
-            label1 = new Label();
-            pictureBox1 = new PictureBox();
-            label2 = new Label();
-            TxtKey = new TextBox();
-            CbPadding = new ComboBox();
-            label3 = new Label();
-            CbMode = new ComboBox();
-            label4 = new Label();
+            CheckHash = new CheckBox();
             BtnConfirmAll = new Button();
-            TxtPlain = new TextBox();
-            label5 = new Label();
-            label6 = new Label();
-            TxtIVEnc = new TextBox();
-            CbOutFormat = new ComboBox();
-            label7 = new Label();
-            BtnClearEnc = new Button();
+            label4 = new Label();
+            CbMode = new ComboBox();
+            label3 = new Label();
+            CbPadding = new ComboBox();
+            TxtKey = new TextBox();
+            label2 = new Label();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+            CbKeySize = new ComboBox();
+            GbEnc = new GroupBox();
+            label12 = new Label();
+            label11 = new Label();
+            RbIVEncBase = new RadioButton();
+            TxtIVEncBase = new TextBox();
+            RbIVEncHEX = new RadioButton();
             BtnEncrypt = new Button();
+            BtnClearEnc = new Button();
+            label7 = new Label();
+            CbOutFormat = new ComboBox();
+            TxtIVEncHEX = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            TxtPlain = new TextBox();
             GbDec = new GroupBox();
+            label14 = new Label();
+            label13 = new Label();
+            RbIVDecBase = new RadioButton();
+            RbIVDecHEX = new RadioButton();
+            TxtIVDecBase = new TextBox();
             BtnDecrypt = new Button();
             BtnClearDec = new Button();
             label8 = new Label();
             CbInFormat = new ComboBox();
-            TxtIVDec = new TextBox();
+            TxtIVDecHEX = new TextBox();
             label9 = new Label();
             label10 = new Label();
             TxtCipher = new TextBox();
             GbConfig.SuspendLayout();
-            GbEnc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            GbEnc.SuspendLayout();
             GbDec.SuspendLayout();
             SuspendLayout();
             // 
             // GbConfig
             // 
+            GbConfig.Controls.Add(CheckHash);
             GbConfig.Controls.Add(BtnConfirmAll);
             GbConfig.Controls.Add(label4);
             GbConfig.Controls.Add(CbMode);
@@ -82,66 +94,54 @@
             GbConfig.TabStop = false;
             GbConfig.Text = "Advanced Encryption Standard Configuration";
             // 
-            // GbEnc
+            // CheckHash
             // 
-            GbEnc.Controls.Add(BtnEncrypt);
-            GbEnc.Controls.Add(BtnClearEnc);
-            GbEnc.Controls.Add(label7);
-            GbEnc.Controls.Add(CbOutFormat);
-            GbEnc.Controls.Add(TxtIVEnc);
-            GbEnc.Controls.Add(label6);
-            GbEnc.Controls.Add(label5);
-            GbEnc.Controls.Add(TxtPlain);
-            GbEnc.Location = new Point(12, 262);
-            GbEnc.Name = "GbEnc";
-            GbEnc.Size = new Size(224, 312);
-            GbEnc.TabIndex = 1;
-            GbEnc.TabStop = false;
-            GbEnc.Text = "Encryption";
+            CheckHash.AutoSize = true;
+            CheckHash.Location = new Point(334, 98);
+            CheckHash.Name = "CheckHash";
+            CheckHash.Size = new Size(119, 19);
+            CheckHash.TabIndex = 11;
+            CheckHash.Text = "Use Key Hashing*";
+            CheckHash.UseVisualStyleBackColor = true;
+            CheckHash.MouseEnter += CheckHash_MouseEnter;
             // 
-            // CbKeySize
+            // BtnConfirmAll
             // 
-            CbKeySize.DropDownStyle = ComboBoxStyle.DropDownList;
-            CbKeySize.FormattingEnabled = true;
-            CbKeySize.Items.AddRange(new object[] { "AES-128", "AES-192", "AES-256" });
-            CbKeySize.Location = new Point(100, 22);
-            CbKeySize.Name = "CbKeySize";
-            CbKeySize.Size = new Size(346, 23);
-            CbKeySize.TabIndex = 0;
+            BtnConfirmAll.Location = new Point(347, 192);
+            BtnConfirmAll.Name = "BtnConfirmAll";
+            BtnConfirmAll.Size = new Size(99, 23);
+            BtnConfirmAll.TabIndex = 10;
+            BtnConfirmAll.Text = "Confirm";
+            BtnConfirmAll.UseVisualStyleBackColor = true;
+            BtnConfirmAll.Click += BtnConfirmAll_Click;
             // 
-            // label1
+            // label4
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(17, 25);
-            label1.Name = "label1";
-            label1.Size = new Size(72, 15);
-            label1.TabIndex = 1;
-            label1.Text = "AES Key Size";
+            label4.AutoSize = true;
+            label4.Location = new Point(241, 132);
+            label4.Name = "label4";
+            label4.Size = new Size(76, 15);
+            label4.TabIndex = 9;
+            label4.Text = "Cipher Mode";
             // 
-            // pictureBox1
+            // CbMode
             // 
-            pictureBox1.BackColor = SystemColors.ActiveCaptionText;
-            pictureBox1.Location = new Point(31, 62);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(400, 1);
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
+            CbMode.DropDownStyle = ComboBoxStyle.DropDownList;
+            CbMode.FormattingEnabled = true;
+            CbMode.Items.AddRange(new object[] { "ECB", "CBC", "CFB", "OFB" });
+            CbMode.Location = new Point(241, 150);
+            CbMode.Name = "CbMode";
+            CbMode.Size = new Size(205, 23);
+            CbMode.TabIndex = 8;
             // 
-            // label2
+            // label3
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(17, 78);
-            label2.Name = "label2";
-            label2.Size = new Size(49, 15);
-            label2.TabIndex = 4;
-            label2.Text = "AES Key";
-            // 
-            // TxtKey
-            // 
-            TxtKey.Location = new Point(17, 96);
-            TxtKey.Name = "TxtKey";
-            TxtKey.Size = new Size(429, 23);
-            TxtKey.TabIndex = 5;
+            label3.AutoSize = true;
+            label3.Location = new Point(17, 132);
+            label3.Name = "label3";
+            label3.Size = new Size(51, 15);
+            label3.TabIndex = 7;
+            label3.Text = "Padding";
             // 
             // CbPadding
             // 
@@ -153,59 +153,170 @@
             CbPadding.Size = new Size(207, 23);
             CbPadding.TabIndex = 6;
             // 
-            // label3
+            // TxtKey
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(17, 132);
-            label3.Name = "label3";
-            label3.Size = new Size(51, 15);
-            label3.TabIndex = 7;
-            label3.Text = "Padding";
+            TxtKey.Location = new Point(17, 96);
+            TxtKey.MaxLength = 32;
+            TxtKey.Name = "TxtKey";
+            TxtKey.Size = new Size(311, 23);
+            TxtKey.TabIndex = 5;
             // 
-            // CbMode
+            // label2
             // 
-            CbMode.DropDownStyle = ComboBoxStyle.DropDownList;
-            CbMode.FormattingEnabled = true;
-            CbMode.Items.AddRange(new object[] { "ECB", "CBC", "CFB", "OFB", "CTR", "GCM" });
-            CbMode.Location = new Point(241, 150);
-            CbMode.Name = "CbMode";
-            CbMode.Size = new Size(205, 23);
-            CbMode.TabIndex = 8;
+            label2.AutoSize = true;
+            label2.Location = new Point(17, 78);
+            label2.Name = "label2";
+            label2.Size = new Size(49, 15);
+            label2.TabIndex = 4;
+            label2.Text = "AES Key";
             // 
-            // label4
+            // pictureBox1
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(241, 132);
-            label4.Name = "label4";
-            label4.Size = new Size(76, 15);
-            label4.TabIndex = 9;
-            label4.Text = "Cipher Mode";
+            pictureBox1.BackColor = SystemColors.ActiveCaptionText;
+            pictureBox1.Location = new Point(31, 62);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(400, 1);
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
             // 
-            // BtnConfirmAll
+            // label1
             // 
-            BtnConfirmAll.Location = new Point(347, 192);
-            BtnConfirmAll.Name = "BtnConfirmAll";
-            BtnConfirmAll.Size = new Size(99, 23);
-            BtnConfirmAll.TabIndex = 10;
-            BtnConfirmAll.Text = "Confirm";
-            BtnConfirmAll.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new Point(17, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(72, 15);
+            label1.TabIndex = 1;
+            label1.Text = "AES Key Size";
             // 
-            // TxtPlain
+            // CbKeySize
             // 
-            TxtPlain.Location = new Point(11, 49);
-            TxtPlain.Multiline = true;
-            TxtPlain.Name = "TxtPlain";
-            TxtPlain.Size = new Size(204, 111);
-            TxtPlain.TabIndex = 6;
+            CbKeySize.DropDownStyle = ComboBoxStyle.DropDownList;
+            CbKeySize.FormattingEnabled = true;
+            CbKeySize.Items.AddRange(new object[] { "AES-128", "AES-192", "AES-256" });
+            CbKeySize.Location = new Point(100, 22);
+            CbKeySize.Name = "CbKeySize";
+            CbKeySize.Size = new Size(346, 23);
+            CbKeySize.TabIndex = 0;
+            CbKeySize.SelectedIndexChanged += CbKeySize_SelectedIndexChanged;
             // 
-            // label5
+            // GbEnc
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(11, 31);
-            label5.Name = "label5";
-            label5.Size = new Size(57, 15);
-            label5.TabIndex = 8;
-            label5.Text = "Plain Text";
+            GbEnc.Controls.Add(label12);
+            GbEnc.Controls.Add(label11);
+            GbEnc.Controls.Add(RbIVEncBase);
+            GbEnc.Controls.Add(TxtIVEncBase);
+            GbEnc.Controls.Add(RbIVEncHEX);
+            GbEnc.Controls.Add(BtnEncrypt);
+            GbEnc.Controls.Add(BtnClearEnc);
+            GbEnc.Controls.Add(label7);
+            GbEnc.Controls.Add(CbOutFormat);
+            GbEnc.Controls.Add(TxtIVEncHEX);
+            GbEnc.Controls.Add(label6);
+            GbEnc.Controls.Add(label5);
+            GbEnc.Controls.Add(TxtPlain);
+            GbEnc.Location = new Point(12, 262);
+            GbEnc.Name = "GbEnc";
+            GbEnc.Size = new Size(224, 376);
+            GbEnc.TabIndex = 1;
+            GbEnc.TabStop = false;
+            GbEnc.Text = "Encryption";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Franklin Gothic Book", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label12.Location = new Point(121, 235);
+            label12.Name = "label12";
+            label12.Size = new Size(94, 15);
+            label12.TabIndex = 20;
+            label12.Text = "Base64 (16 Chars)";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Franklin Gothic Book", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label11.Location = new Point(138, 189);
+            label11.Name = "label11";
+            label11.Size = new Size(77, 15);
+            label11.TabIndex = 19;
+            label11.Text = "HEX (32 Chars)";
+            // 
+            // RbIVEncBase
+            // 
+            RbIVEncBase.AutoSize = true;
+            RbIVEncBase.Location = new Point(11, 254);
+            RbIVEncBase.Name = "RbIVEncBase";
+            RbIVEncBase.Size = new Size(14, 13);
+            RbIVEncBase.TabIndex = 18;
+            RbIVEncBase.TabStop = true;
+            RbIVEncBase.UseVisualStyleBackColor = true;
+            RbIVEncBase.CheckedChanged += RbIVEncBase_CheckedChanged;
+            // 
+            // TxtIVEncBase
+            // 
+            TxtIVEncBase.Location = new Point(31, 250);
+            TxtIVEncBase.MaxLength = 16;
+            TxtIVEncBase.Name = "TxtIVEncBase";
+            TxtIVEncBase.Size = new Size(184, 23);
+            TxtIVEncBase.TabIndex = 17;
+            // 
+            // RbIVEncHEX
+            // 
+            RbIVEncHEX.AutoSize = true;
+            RbIVEncHEX.Location = new Point(11, 209);
+            RbIVEncHEX.Name = "RbIVEncHEX";
+            RbIVEncHEX.Size = new Size(14, 13);
+            RbIVEncHEX.TabIndex = 16;
+            RbIVEncHEX.TabStop = true;
+            RbIVEncHEX.UseVisualStyleBackColor = true;
+            RbIVEncHEX.CheckedChanged += RbIVEncHEX_CheckedChanged;
+            // 
+            // BtnEncrypt
+            // 
+            BtnEncrypt.Location = new Point(116, 337);
+            BtnEncrypt.Name = "BtnEncrypt";
+            BtnEncrypt.Size = new Size(99, 23);
+            BtnEncrypt.TabIndex = 15;
+            BtnEncrypt.Text = "Encrypt";
+            BtnEncrypt.UseVisualStyleBackColor = true;
+            BtnEncrypt.Click += BtnEncrypt_Click;
+            // 
+            // BtnClearEnc
+            // 
+            BtnClearEnc.Location = new Point(11, 337);
+            BtnClearEnc.Name = "BtnClearEnc";
+            BtnClearEnc.Size = new Size(99, 23);
+            BtnClearEnc.TabIndex = 14;
+            BtnClearEnc.Text = "Clear";
+            BtnClearEnc.UseVisualStyleBackColor = true;
+            BtnClearEnc.Click += BtnClearEnc_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(11, 284);
+            label7.Name = "label7";
+            label7.Size = new Size(86, 15);
+            label7.TabIndex = 12;
+            label7.Text = "Output Format";
+            // 
+            // CbOutFormat
+            // 
+            CbOutFormat.DropDownStyle = ComboBoxStyle.DropDownList;
+            CbOutFormat.FormattingEnabled = true;
+            CbOutFormat.Items.AddRange(new object[] { "Base64", "HEX" });
+            CbOutFormat.Location = new Point(11, 302);
+            CbOutFormat.Name = "CbOutFormat";
+            CbOutFormat.Size = new Size(204, 23);
+            CbOutFormat.TabIndex = 11;
+            // 
+            // TxtIVEncHEX
+            // 
+            TxtIVEncHEX.Location = new Point(31, 205);
+            TxtIVEncHEX.MaxLength = 32;
+            TxtIVEncHEX.Name = "TxtIVEncHEX";
+            TxtIVEncHEX.Size = new Size(184, 23);
+            TxtIVEncHEX.TabIndex = 10;
             // 
             // label6
             // 
@@ -216,89 +327,119 @@
             label6.TabIndex = 9;
             label6.Text = "Initialization Vector";
             // 
-            // TxtIVEnc
+            // label5
             // 
-            TxtIVEnc.Location = new Point(11, 186);
-            TxtIVEnc.Name = "TxtIVEnc";
-            TxtIVEnc.Size = new Size(204, 23);
-            TxtIVEnc.TabIndex = 10;
+            label5.AutoSize = true;
+            label5.Location = new Point(11, 31);
+            label5.Name = "label5";
+            label5.Size = new Size(57, 15);
+            label5.TabIndex = 8;
+            label5.Text = "Plain Text";
             // 
-            // CbOutFormat
+            // TxtPlain
             // 
-            CbOutFormat.DropDownStyle = ComboBoxStyle.DropDownList;
-            CbOutFormat.FormattingEnabled = true;
-            CbOutFormat.Items.AddRange(new object[] { "Base64", "HEX" });
-            CbOutFormat.Location = new Point(11, 237);
-            CbOutFormat.Name = "CbOutFormat";
-            CbOutFormat.Size = new Size(204, 23);
-            CbOutFormat.TabIndex = 11;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(11, 219);
-            label7.Name = "label7";
-            label7.Size = new Size(86, 15);
-            label7.TabIndex = 12;
-            label7.Text = "Output Format";
-            // 
-            // BtnClearEnc
-            // 
-            BtnClearEnc.Location = new Point(11, 272);
-            BtnClearEnc.Name = "BtnClearEnc";
-            BtnClearEnc.Size = new Size(99, 23);
-            BtnClearEnc.TabIndex = 14;
-            BtnClearEnc.Text = "Clear";
-            BtnClearEnc.UseVisualStyleBackColor = true;
-            // 
-            // BtnEncrypt
-            // 
-            BtnEncrypt.Location = new Point(116, 272);
-            BtnEncrypt.Name = "BtnEncrypt";
-            BtnEncrypt.Size = new Size(99, 23);
-            BtnEncrypt.TabIndex = 15;
-            BtnEncrypt.Text = "Encrypt";
-            BtnEncrypt.UseVisualStyleBackColor = true;
+            TxtPlain.Location = new Point(11, 49);
+            TxtPlain.Multiline = true;
+            TxtPlain.Name = "TxtPlain";
+            TxtPlain.Size = new Size(204, 111);
+            TxtPlain.TabIndex = 6;
             // 
             // GbDec
             // 
+            GbDec.Controls.Add(label14);
+            GbDec.Controls.Add(label13);
+            GbDec.Controls.Add(RbIVDecBase);
+            GbDec.Controls.Add(RbIVDecHEX);
+            GbDec.Controls.Add(TxtIVDecBase);
             GbDec.Controls.Add(BtnDecrypt);
             GbDec.Controls.Add(BtnClearDec);
             GbDec.Controls.Add(label8);
             GbDec.Controls.Add(CbInFormat);
-            GbDec.Controls.Add(TxtIVDec);
+            GbDec.Controls.Add(TxtIVDecHEX);
             GbDec.Controls.Add(label9);
             GbDec.Controls.Add(label10);
             GbDec.Controls.Add(TxtCipher);
             GbDec.Location = new Point(253, 262);
             GbDec.Name = "GbDec";
-            GbDec.Size = new Size(224, 312);
+            GbDec.Size = new Size(224, 376);
             GbDec.TabIndex = 16;
             GbDec.TabStop = false;
             GbDec.Text = "Decryption";
             // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Franklin Gothic Book", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label14.Location = new Point(121, 235);
+            label14.Name = "label14";
+            label14.Size = new Size(94, 15);
+            label14.TabIndex = 21;
+            label14.Text = "Base64 (16 Chars)";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Franklin Gothic Book", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label13.Location = new Point(138, 189);
+            label13.Name = "label13";
+            label13.Size = new Size(77, 15);
+            label13.TabIndex = 20;
+            label13.Text = "HEX (32 Chars)";
+            // 
+            // RbIVDecBase
+            // 
+            RbIVDecBase.AutoSize = true;
+            RbIVDecBase.Location = new Point(11, 254);
+            RbIVDecBase.Name = "RbIVDecBase";
+            RbIVDecBase.Size = new Size(14, 13);
+            RbIVDecBase.TabIndex = 18;
+            RbIVDecBase.TabStop = true;
+            RbIVDecBase.UseVisualStyleBackColor = true;
+            RbIVDecBase.CheckedChanged += RbIVDecBase_CheckedChanged;
+            // 
+            // RbIVDecHEX
+            // 
+            RbIVDecHEX.AutoSize = true;
+            RbIVDecHEX.Location = new Point(11, 209);
+            RbIVDecHEX.Name = "RbIVDecHEX";
+            RbIVDecHEX.Size = new Size(14, 13);
+            RbIVDecHEX.TabIndex = 17;
+            RbIVDecHEX.TabStop = true;
+            RbIVDecHEX.UseVisualStyleBackColor = true;
+            RbIVDecHEX.CheckedChanged += RbIVDecHEX_CheckedChanged;
+            // 
+            // TxtIVDecBase
+            // 
+            TxtIVDecBase.Location = new Point(31, 250);
+            TxtIVDecBase.MaxLength = 16;
+            TxtIVDecBase.Name = "TxtIVDecBase";
+            TxtIVDecBase.Size = new Size(184, 23);
+            TxtIVDecBase.TabIndex = 16;
+            // 
             // BtnDecrypt
             // 
-            BtnDecrypt.Location = new Point(116, 272);
+            BtnDecrypt.Location = new Point(116, 337);
             BtnDecrypt.Name = "BtnDecrypt";
             BtnDecrypt.Size = new Size(99, 23);
             BtnDecrypt.TabIndex = 15;
             BtnDecrypt.Text = "Decrypt";
             BtnDecrypt.UseVisualStyleBackColor = true;
+            BtnDecrypt.Click += BtnDecrypt_Click;
             // 
             // BtnClearDec
             // 
-            BtnClearDec.Location = new Point(11, 272);
+            BtnClearDec.Location = new Point(11, 337);
             BtnClearDec.Name = "BtnClearDec";
             BtnClearDec.Size = new Size(99, 23);
             BtnClearDec.TabIndex = 14;
             BtnClearDec.Text = "Clear";
             BtnClearDec.UseVisualStyleBackColor = true;
+            BtnClearDec.Click += BtnClearDec_Click;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(11, 219);
+            label8.Location = new Point(11, 284);
             label8.Name = "label8";
             label8.Size = new Size(76, 15);
             label8.TabIndex = 12;
@@ -309,17 +450,18 @@
             CbInFormat.DropDownStyle = ComboBoxStyle.DropDownList;
             CbInFormat.FormattingEnabled = true;
             CbInFormat.Items.AddRange(new object[] { "Base64", "HEX" });
-            CbInFormat.Location = new Point(11, 237);
+            CbInFormat.Location = new Point(11, 302);
             CbInFormat.Name = "CbInFormat";
             CbInFormat.Size = new Size(204, 23);
             CbInFormat.TabIndex = 11;
             // 
-            // TxtIVDec
+            // TxtIVDecHEX
             // 
-            TxtIVDec.Location = new Point(11, 186);
-            TxtIVDec.Name = "TxtIVDec";
-            TxtIVDec.Size = new Size(204, 23);
-            TxtIVDec.TabIndex = 10;
+            TxtIVDecHEX.Location = new Point(31, 205);
+            TxtIVDecHEX.MaxLength = 32;
+            TxtIVDecHEX.Name = "TxtIVDecHEX";
+            TxtIVDecHEX.Size = new Size(184, 23);
+            TxtIVDecHEX.TabIndex = 10;
             // 
             // label9
             // 
@@ -351,7 +493,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(489, 586);
+            ClientSize = new Size(489, 650);
             Controls.Add(GbDec);
             Controls.Add(GbEnc);
             Controls.Add(GbConfig);
@@ -359,9 +501,9 @@
             Text = "AdvancedEncryptionStandard";
             GbConfig.ResumeLayout(false);
             GbConfig.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             GbEnc.ResumeLayout(false);
             GbEnc.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             GbDec.ResumeLayout(false);
             GbDec.PerformLayout();
             ResumeLayout(false);
@@ -385,7 +527,7 @@
         private Button BtnClearEnc;
         private Label label7;
         private ComboBox CbOutFormat;
-        private TextBox TxtIVEnc;
+        private TextBox TxtIVEncHEX;
         private Label label6;
         private Label label5;
         private TextBox TxtPlain;
@@ -394,9 +536,20 @@
         private Button BtnClearDec;
         private Label label8;
         private ComboBox CbInFormat;
-        private TextBox TxtIVDec;
+        private TextBox TxtIVDecHEX;
         private Label label9;
         private Label label10;
         private TextBox TxtCipher;
+        private CheckBox CheckHash;
+        private RadioButton RbIVEncHEX;
+        private Label label11;
+        private RadioButton RbIVEncBase;
+        private TextBox TxtIVEncBase;
+        private Label label12;
+        private Label label14;
+        private Label label13;
+        private RadioButton RbIVDecBase;
+        private RadioButton RbIVDecHEX;
+        private TextBox TxtIVDecBase;
     }
 }
