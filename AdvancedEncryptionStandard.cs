@@ -91,9 +91,6 @@ namespace AdvancedEncryptionStandard
                 return;
             }
 
-            //UseHash = CheckHash.Checked;
-            Debug.WriteLine($"Key: {Key}");
-            Debug.WriteLine($"IV: {IV}");
             string encrypted = AESEncryption(
                 TxtPlain.Text,
                 Key,
@@ -387,16 +384,9 @@ namespace AdvancedEncryptionStandard
                 using SHA256 sha256 = SHA256.Create();
                 byte[] hashedKey = sha256.ComputeHash(adjustedKey);
                 byte[] finalKey = hashedKey.Take(keyLength).ToArray();
-
-                Debug.WriteLine(
-                    $"Generated AES-{keyLength * 8} Key (Hashed): {BitConverter.ToString(finalKey)}"
-                );
                 return finalKey;
             }
 
-            Debug.WriteLine(
-                $"Generated AES-{keyLength * 8} Key: {BitConverter.ToString(adjustedKey)}"
-            );
             return adjustedKey;
         }
     }
