@@ -14,9 +14,6 @@ namespace AdvancedEncryptionStandard
         public string? Mode { get; set; }
         public string? KeySize { get; set; }
         public new string? Padding { get; set; }
-        public bool UseHash { get; set; }
-        public bool IsHexIV { get; set; }
-        public bool IsBase64IV { get; set; }
 
         private readonly ToolTip toolTip = new();
 
@@ -51,33 +48,46 @@ namespace AdvancedEncryptionStandard
             {
                 TxtIVEncHEX.Text = "";
                 TxtIVDecHEX.Text = "";
-                TxtIVEncBase.Text = "";
-                TxtIVDecBase.Text = "";
+                TxtIVEncString.Text = "";
+                TxtIVDecString.Text = "";
                 TxtIVEncHEX.Enabled = false;
+                TxtIVEncString.Enabled = false;
                 TxtIVDecHEX.Enabled = false;
+                TxtIVDecString.Enabled = false;
+                RbIVDecHEX.Enabled = false;
+                RbIVDecString.Enabled = false;
+                RbIVEncHEX.Enabled = false;
+                RbIVEncString.Enabled = false;
+                RbIVDecHEX.Checked = false;
+                RbIVDecString.Checked = false;
+                RbIVEncHEX.Checked = false;
+                RbIVEncString.Checked = false;
             }
             else
             {
                 TxtIVEncHEX.Enabled = true;
                 TxtIVDecHEX.Enabled = true;
-                TxtIVEncBase.Enabled = true;
-                TxtIVDecBase.Enabled = true;
+                TxtIVEncString.Enabled = true;
+                TxtIVDecString.Enabled = true;
+                RbIVDecHEX.Enabled = true;
+                RbIVDecString.Enabled = true;
+                RbIVEncHEX.Enabled = true;
+                RbIVEncString.Enabled = true;
             }
             MessageBox.Show("Configurations saved!");
         }
 
         private void BtnEncrypt_Click(object sender, EventArgs e)
         {
-            IV = RbIVEncHEX.Checked ? TxtIVEncHEX.Text : TxtIVEncBase.Text;
+            IV = RbIVEncHEX.Checked ? TxtIVEncHEX.Text : TxtIVEncString.Text;
             if (
                 string.IsNullOrEmpty(Key)
                 || string.IsNullOrEmpty(Padding)
                 || string.IsNullOrEmpty(Mode)
                 || string.IsNullOrEmpty(KeySize)
-                || string.IsNullOrEmpty(IV)
             )
             {
-                MessageBox.Show("Key / IV / Padding / Mode / Key Size cannot be null or empty!");
+                MessageBox.Show("Key / Padding / Mode / Key Size cannot be null or empty!");
                 return;
             }
 
@@ -98,16 +108,15 @@ namespace AdvancedEncryptionStandard
 
         private void BtnDecrypt_Click(object sender, EventArgs e)
         {
-            IV = RbIVDecHEX.Checked ? TxtIVDecHEX.Text : TxtIVDecBase.Text;
+            IV = RbIVDecHEX.Checked ? TxtIVDecHEX.Text : TxtIVDecString.Text;
             if (
                 string.IsNullOrEmpty(Key)
                 || string.IsNullOrEmpty(Padding)
                 || string.IsNullOrEmpty(Mode)
                 || string.IsNullOrEmpty(KeySize)
-                || string.IsNullOrEmpty(IV)
             )
             {
-                MessageBox.Show("Key / IV / Padding / Mode / Key Size cannot be null or empty!");
+                MessageBox.Show("Key / Padding / Mode / Key Size cannot be null or empty!");
                 return;
             }
             string decrypted = AESDecryption(
@@ -126,9 +135,7 @@ namespace AdvancedEncryptionStandard
         {
             TxtPlain.Text = "";
             TxtIVEncHEX.Text = "";
-            TxtIVEncBase.Text = "";
-            RbIVEncBase.Checked = false;
-            RbIVEncHEX.Checked = false;
+            TxtIVEncString.Text = "";
             CbOutFormat.SelectedIndex = -1;
         }
 
@@ -136,10 +143,8 @@ namespace AdvancedEncryptionStandard
         {
             TxtCipher.Text = "";
             TxtIVDecHEX.Text = "";
-            TxtIVDecBase.Text = "";
+            TxtIVDecString.Text = "";
             CbInFormat.SelectedIndex = -1;
-            RbIVDecBase.Checked = false;
-            RbIVDecHEX.Checked = false;
         }
 
         private void CbKeySize_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,30 +165,30 @@ namespace AdvancedEncryptionStandard
 
         private void RbIVEncHEX_CheckedChanged(object sender, EventArgs e)
         {
-            TxtIVEncBase.Clear();
-            TxtIVEncBase.Enabled = false;
+            TxtIVEncString.Clear();
+            TxtIVEncString.Enabled = false;
             TxtIVEncHEX.Enabled = true;
         }
 
-        private void RbIVEncBase_CheckedChanged(object sender, EventArgs e)
+        private void RbIVEncString_CheckedChanged(object sender, EventArgs e)
         {
             TxtIVEncHEX.Clear();
             TxtIVEncHEX.Enabled = false;
-            TxtIVEncBase.Enabled = true;
+            TxtIVEncString.Enabled = true;
+        }
+
+        private void RbIVDecString_CheckedChanged(object sender, EventArgs e)
+        {
+            TxtIVDecHEX.Clear();
+            TxtIVDecHEX.Enabled = false;
+            TxtIVDecString.Enabled = true;
         }
 
         private void RbIVDecHEX_CheckedChanged(object sender, EventArgs e)
         {
-            TxtIVDecBase.Clear();
-            TxtIVDecBase.Enabled = false;
+            TxtIVDecString.Clear();
+            TxtIVDecString.Enabled = false;
             TxtIVDecHEX.Enabled = true;
-        }
-
-        private void RbIVDecBase_CheckedChanged(object sender, EventArgs e)
-        {
-            TxtIVDecHEX.Clear();
-            TxtIVDecHEX.Enabled = false;
-            TxtIVDecBase.Enabled = true;
         }
 
         private void CheckHash_MouseEnter(object sender, EventArgs e)
@@ -214,7 +219,6 @@ namespace AdvancedEncryptionStandard
                 useHash
             );
             aes.Key = keyBytes;
-
             byte[] ivBytes = Encoding.ASCII.GetBytes(IV);
 
             if (RbIVEncHEX.Checked)
@@ -227,18 +231,12 @@ namespace AdvancedEncryptionStandard
                     .Select(i => Convert.ToByte(IV.Substring(i * 2, 2), 16))
                     .ToArray();
             }
-            else if (RbIVEncBase.Checked)
+            else if (RbIVEncString.Checked)
             {
-                ivBytes = Convert.FromBase64String(IV);
+                ivBytes = Encoding.ASCII.GetBytes(IV);
                 if (ivBytes.Length != 16)
-                    throw new ArgumentException("Base64 IV must decode to exactly 16 bytes.");
+                    throw new ArgumentException("IV must be exactly 16 bytes long");
             }
-            else
-            {
-                throw new ArgumentException("Invalid IV format selected.");
-            }
-
-            aes.IV = ivBytes;
 
             aes.Mode = Mode switch
             {
@@ -248,6 +246,11 @@ namespace AdvancedEncryptionStandard
                 "OFB" => CipherMode.OFB,
                 _ => CipherMode.CBC,
             };
+
+            if (aes.Mode != CipherMode.ECB)
+            {
+                aes.IV = ivBytes;
+            }
 
             using MemoryStream memoryStream = new();
             using CryptoStream cryptoStream = new(
@@ -290,7 +293,7 @@ namespace AdvancedEncryptionStandard
 
             byte[] ivBytes = Encoding.ASCII.GetBytes(IV);
 
-            if (RbIVEncHEX.Checked)
+            if (RbIVDecHEX.Checked)
             {
                 if (string.IsNullOrEmpty(IV) || IV.Length != 32)
                     throw new ArgumentException("HEX IV must be exactly 32 characters.");
@@ -300,18 +303,12 @@ namespace AdvancedEncryptionStandard
                     .Select(i => Convert.ToByte(IV.Substring(i * 2, 2), 16))
                     .ToArray();
             }
-            else if (RbIVEncBase.Checked)
+            else if (RbIVDecString.Checked)
             {
-                ivBytes = Convert.FromBase64String(IV);
+                ivBytes = Encoding.ASCII.GetBytes(IV);
                 if (ivBytes.Length != 16)
-                    throw new ArgumentException("Base64 IV must decode to exactly 16 bytes.");
+                    throw new ArgumentException("IV must be exactly 16 bytes long");
             }
-            else
-            {
-                throw new ArgumentException("Invalid IV format selected.");
-            }
-
-            aes.IV = ivBytes;
 
             aes.Mode = Mode switch
             {
@@ -321,6 +318,11 @@ namespace AdvancedEncryptionStandard
                 "OFB" => CipherMode.OFB,
                 _ => CipherMode.CBC,
             };
+
+            if (aes.Mode != CipherMode.ECB)
+            {
+                aes.IV = ivBytes;
+            }
 
             byte[] cipherBytes = InputFormat switch
             {

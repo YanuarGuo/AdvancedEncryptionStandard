@@ -43,8 +43,8 @@
             GbEnc = new GroupBox();
             label12 = new Label();
             label11 = new Label();
-            RbIVEncBase = new RadioButton();
-            TxtIVEncBase = new TextBox();
+            RbIVEncString = new RadioButton();
+            TxtIVEncString = new TextBox();
             RbIVEncHEX = new RadioButton();
             BtnEncrypt = new Button();
             BtnClearEnc = new Button();
@@ -57,9 +57,9 @@
             GbDec = new GroupBox();
             label14 = new Label();
             label13 = new Label();
-            RbIVDecBase = new RadioButton();
+            RbIVDecString = new RadioButton();
             RbIVDecHEX = new RadioButton();
-            TxtIVDecBase = new TextBox();
+            TxtIVDecString = new TextBox();
             BtnDecrypt = new Button();
             BtnClearDec = new Button();
             label8 = new Label();
@@ -128,7 +128,7 @@
             // 
             CbMode.DropDownStyle = ComboBoxStyle.DropDownList;
             CbMode.FormattingEnabled = true;
-            CbMode.Items.AddRange(new object[] { "ECB", "CBC", "CFB", "OFB" });
+            CbMode.Items.AddRange(new object[] { "ECB", "CBC", "CFB" });
             CbMode.Location = new Point(241, 150);
             CbMode.Name = "CbMode";
             CbMode.Size = new Size(205, 23);
@@ -203,8 +203,8 @@
             // 
             GbEnc.Controls.Add(label12);
             GbEnc.Controls.Add(label11);
-            GbEnc.Controls.Add(RbIVEncBase);
-            GbEnc.Controls.Add(TxtIVEncBase);
+            GbEnc.Controls.Add(RbIVEncString);
+            GbEnc.Controls.Add(TxtIVEncString);
             GbEnc.Controls.Add(RbIVEncHEX);
             GbEnc.Controls.Add(BtnEncrypt);
             GbEnc.Controls.Add(BtnClearEnc);
@@ -225,11 +225,11 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Franklin Gothic Book", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label12.Location = new Point(121, 235);
+            label12.Location = new Point(129, 235);
             label12.Name = "label12";
-            label12.Size = new Size(94, 15);
+            label12.Size = new Size(86, 15);
             label12.TabIndex = 20;
-            label12.Text = "Base64 (16 Chars)";
+            label12.Text = "String (16 Chars)";
             // 
             // label11
             // 
@@ -241,24 +241,24 @@
             label11.TabIndex = 19;
             label11.Text = "HEX (32 Chars)";
             // 
-            // RbIVEncBase
+            // RbIVEncString
             // 
-            RbIVEncBase.AutoSize = true;
-            RbIVEncBase.Location = new Point(11, 254);
-            RbIVEncBase.Name = "RbIVEncBase";
-            RbIVEncBase.Size = new Size(14, 13);
-            RbIVEncBase.TabIndex = 18;
-            RbIVEncBase.TabStop = true;
-            RbIVEncBase.UseVisualStyleBackColor = true;
-            RbIVEncBase.CheckedChanged += RbIVEncBase_CheckedChanged;
+            RbIVEncString.AutoSize = true;
+            RbIVEncString.Location = new Point(11, 254);
+            RbIVEncString.Name = "RbIVEncString";
+            RbIVEncString.Size = new Size(14, 13);
+            RbIVEncString.TabIndex = 18;
+            RbIVEncString.TabStop = true;
+            RbIVEncString.UseVisualStyleBackColor = true;
+            RbIVEncString.CheckedChanged += RbIVEncString_CheckedChanged;
             // 
-            // TxtIVEncBase
+            // TxtIVEncString
             // 
-            TxtIVEncBase.Location = new Point(31, 250);
-            TxtIVEncBase.MaxLength = 16;
-            TxtIVEncBase.Name = "TxtIVEncBase";
-            TxtIVEncBase.Size = new Size(184, 23);
-            TxtIVEncBase.TabIndex = 17;
+            TxtIVEncString.Location = new Point(31, 250);
+            TxtIVEncString.MaxLength = 16;
+            TxtIVEncString.Name = "TxtIVEncString";
+            TxtIVEncString.Size = new Size(184, 23);
+            TxtIVEncString.TabIndex = 17;
             // 
             // RbIVEncHEX
             // 
@@ -348,9 +348,9 @@
             // 
             GbDec.Controls.Add(label14);
             GbDec.Controls.Add(label13);
-            GbDec.Controls.Add(RbIVDecBase);
+            GbDec.Controls.Add(RbIVDecString);
             GbDec.Controls.Add(RbIVDecHEX);
-            GbDec.Controls.Add(TxtIVDecBase);
+            GbDec.Controls.Add(TxtIVDecString);
             GbDec.Controls.Add(BtnDecrypt);
             GbDec.Controls.Add(BtnClearDec);
             GbDec.Controls.Add(label8);
@@ -370,11 +370,11 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Franklin Gothic Book", 8.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label14.Location = new Point(121, 235);
+            label14.Location = new Point(129, 235);
             label14.Name = "label14";
-            label14.Size = new Size(94, 15);
+            label14.Size = new Size(86, 15);
             label14.TabIndex = 21;
-            label14.Text = "Base64 (16 Chars)";
+            label14.Text = "String (16 Chars)";
             // 
             // label13
             // 
@@ -386,16 +386,16 @@
             label13.TabIndex = 20;
             label13.Text = "HEX (32 Chars)";
             // 
-            // RbIVDecBase
+            // RbIVDecString
             // 
-            RbIVDecBase.AutoSize = true;
-            RbIVDecBase.Location = new Point(11, 254);
-            RbIVDecBase.Name = "RbIVDecBase";
-            RbIVDecBase.Size = new Size(14, 13);
-            RbIVDecBase.TabIndex = 18;
-            RbIVDecBase.TabStop = true;
-            RbIVDecBase.UseVisualStyleBackColor = true;
-            RbIVDecBase.CheckedChanged += RbIVDecBase_CheckedChanged;
+            RbIVDecString.AutoSize = true;
+            RbIVDecString.Location = new Point(11, 254);
+            RbIVDecString.Name = "RbIVDecString";
+            RbIVDecString.Size = new Size(14, 13);
+            RbIVDecString.TabIndex = 18;
+            RbIVDecString.TabStop = true;
+            RbIVDecString.UseVisualStyleBackColor = true;
+            RbIVDecString.CheckedChanged += RbIVDecString_CheckedChanged;
             // 
             // RbIVDecHEX
             // 
@@ -408,13 +408,13 @@
             RbIVDecHEX.UseVisualStyleBackColor = true;
             RbIVDecHEX.CheckedChanged += RbIVDecHEX_CheckedChanged;
             // 
-            // TxtIVDecBase
+            // TxtIVDecString
             // 
-            TxtIVDecBase.Location = new Point(31, 250);
-            TxtIVDecBase.MaxLength = 16;
-            TxtIVDecBase.Name = "TxtIVDecBase";
-            TxtIVDecBase.Size = new Size(184, 23);
-            TxtIVDecBase.TabIndex = 16;
+            TxtIVDecString.Location = new Point(31, 250);
+            TxtIVDecString.MaxLength = 16;
+            TxtIVDecString.Name = "TxtIVDecString";
+            TxtIVDecString.Size = new Size(184, 23);
+            TxtIVDecString.TabIndex = 16;
             // 
             // BtnDecrypt
             // 
@@ -543,13 +543,13 @@
         private CheckBox CheckHash;
         private RadioButton RbIVEncHEX;
         private Label label11;
-        private RadioButton RbIVEncBase;
-        private TextBox TxtIVEncBase;
+        private RadioButton RbIVEncString;
+        private TextBox TxtIVEncString;
         private Label label12;
-        private Label label14;
         private Label label13;
-        private RadioButton RbIVDecBase;
+        private RadioButton RbIVDecString;
         private RadioButton RbIVDecHEX;
-        private TextBox TxtIVDecBase;
+        private TextBox TxtIVDecString;
+        private Label label14;
     }
 }
