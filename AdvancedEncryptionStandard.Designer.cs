@@ -128,7 +128,7 @@
             // 
             CbMode.DropDownStyle = ComboBoxStyle.DropDownList;
             CbMode.FormattingEnabled = true;
-            CbMode.Items.AddRange(new object[] { "ECB", "CBC", "CFB" });
+            CbMode.Items.AddRange(new object[] { "ECB", "CBC", "OFB", "CFB" });
             CbMode.Location = new Point(241, 150);
             CbMode.Name = "CbMode";
             CbMode.Size = new Size(205, 23);
