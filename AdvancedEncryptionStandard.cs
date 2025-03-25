@@ -394,7 +394,7 @@ namespace AdvancedEncryptionStandard
 
             if (useHash)
             {
-                byte[] hashedKey = SHA256.HashData(adjustedKey);
+                byte[] hashedKey = MD5.HashData(adjustedKey);
                 byte[] finalKey = hashedKey.Take(keyLength).ToArray();
                 return finalKey;
             }
